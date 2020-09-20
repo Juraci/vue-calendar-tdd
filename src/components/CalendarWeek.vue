@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import { store } from '../store.js';
-import CalendarDay from './CalendarDay.vue';
+import { store } from "../store.js";
+import CalendarDay from "./CalendarDay.vue";
 export default {
-  name: 'CalendarWeek',
+  name: "CalendarWeek",
   components: { CalendarDay },
   data() {
     return { sharedState: store.state };
-  },
+  }
 };
 </script>
 

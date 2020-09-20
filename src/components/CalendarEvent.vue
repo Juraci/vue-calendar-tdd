@@ -2,7 +2,8 @@
   <div class="day-event" :style="backgroundColor">
     <div>
       <span class="has-text-centered details">{{ dayEvent.details }}</span>
-      <div v-if="dayEvent.edit" class="has-text-centered icons"><i class="fa fa-pencil-square edit-icon"></i>
+      <div v-if="dayEvent.edit" class="has-text-centered icons">
+        <i class="fa fa-pencil-square edit-icon"></i>
         <i class="fa fa-trash-o delete-icon"></i>
       </div>
     </div>
@@ -11,26 +12,28 @@
 
 <script>
 export default {
-  name: 'CalendarEvent',
+  name: "CalendarEvent",
   props: {
     dayEvent: {
       type: Object,
       default() {
-        return { details: 'default event', edit: true };
-      },
-    },
+        return { details: "default event", edit: true };
+      }
+    }
   },
   data() {
     return {
-      colors: ['#FF9999', '#85D6FF', '#99FF99'],
+      colors: ["#FF9999", "#85D6FF", "#99FF99"]
     };
   },
   computed: {
-    backgroundColor() { return `background-color: ${this.randonColor}`; },
+    backgroundColor() {
+      return `background-color: ${this.randonColor}`;
+    },
     randonColor() {
       return this.colors[Math.floor(Math.random() * this.colors.length)];
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -39,7 +42,7 @@ export default {
   margin-top: 6px;
   margin-bottom: 6px;
   display: block;
-  color: #4C4C4C;
+  color: #4c4c4c;
   padding: 5px;
 
   .details {
@@ -53,7 +56,7 @@ export default {
   input {
     background: none;
     border: 0;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid #fff;
     width: 100%;
 
     &:focus {

@@ -1,22 +1,24 @@
 <template>
-    <div id="calendar-entry">
-      <div class="calendar-entry-note">
-        <input type="text" placeholder="New Event" />
-        <p class="calendar-entry-day">Day of event: <span class="bold">Monday</span></p>
-        <a class="button is-primary is-small is-outlined">Submit</a>
-      </div>
+  <div id="calendar-entry">
+    <div class="calendar-entry-note">
+      <input type="text" placeholder="New Event" />
+      <p class="calendar-entry-day">
+        Day of event: <span class="bold">Monday</span>
+      </p>
+      <a class="button is-primary is-small is-outlined">Submit</a>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'CalendarEntry',
+  name: "CalendarEntry"
 };
 </script>
 
 <style lang="scss">
 #calendar-entry {
-  background: #FFF;
+  background: #fff;
   border: 1px solid #42b883;
   border-radius: 10px;
   max-width: 300px;
@@ -28,7 +30,7 @@ export default {
       width: 200px;
       font-weight: 600;
       border: 0;
-      border-bottom: 1px solid #CCC;
+      border-bottom: 1px solid #ccc;
       font-size: 15px;
       height: 30px;
       margin-bottom: 10px;

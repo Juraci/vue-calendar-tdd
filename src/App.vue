@@ -6,19 +6,20 @@
 </template>
 
 <script>
-import CalendarWeek from './components/CalendarWeek.vue'
-import CalendarEntry from './components/CalendarEntry.vue'
+import CalendarWeek from "./components/CalendarWeek.vue";
+import CalendarEntry from "./components/CalendarEntry.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     CalendarWeek,
-    CalendarEntry,
-  },
-}
+    CalendarEntry
+  }
+};
 </script>
 
 <style lang="scss">
-html, body {
+html,
+body {
   height: 100%;
 }
 
