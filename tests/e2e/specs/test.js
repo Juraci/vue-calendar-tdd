@@ -18,4 +18,18 @@ describe("weekly task calendar", () => {
       .click();
     cy.get(".calendar-entry-day").should("contain", "Wednesday");
   });
+
+  it("submits a new event to the active day", () => {
+    cy.get("#calendar-entry input").type("Learn Vue 3.0");
+    cy.get("#calendar-entry .button").click();
+
+    cy.get(".day.column")
+      .eq(2)
+      .as("Wednesday");
+
+    cy.get("@Wednesday")
+      .find(".day-event")
+      .should("have.length", 2);
+    cy.get("@Wednesday").should("contain", "Learn Vue 3.0");
+  });
 });

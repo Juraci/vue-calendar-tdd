@@ -39,8 +39,8 @@ export default {
   methods: {
     setActiveDay(dayId) {
       store.setActiveDay({ dayId });
-    },
-  },
+    }
+  }
 };
 </script>
 

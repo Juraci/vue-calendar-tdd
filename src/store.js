@@ -15,5 +15,9 @@ export const store = {
     this.state.seedData.map(day => {
       day.id === dayId ? (day.active = true) : (day.active = false);
     });
+  },
+  submitEvent(details) {
+    const activeDay = this.getActiveDay();
+    activeDay.events.push({ details, edit: false });
   }
 };
