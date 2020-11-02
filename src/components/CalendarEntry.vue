@@ -37,6 +37,7 @@ export default {
   methods: {
     submitEvent(details) {
       store.submitEvent(details);
+      this.inputEntry = "";
     }
   }
 };

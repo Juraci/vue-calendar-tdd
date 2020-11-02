@@ -31,5 +31,7 @@ describe("weekly task calendar", () => {
       .find(".day-event")
       .should("have.length", 2);
     cy.get("@Wednesday").should("contain", "Learn Vue 3.0");
+
+    cy.get("#calendar-entry input").should("have.value", "");
   });
 });
