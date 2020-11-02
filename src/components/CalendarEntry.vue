@@ -17,6 +17,13 @@
         Submit
       </a>
     </div>
+    <p
+      class="error"
+      style="color: red; font-size: 13px; text-align: center"
+      v-if="error"
+    >
+      You should type something first!
+    </p>
   </div>
 </template>
 
@@ -26,7 +33,8 @@ export default {
   name: "CalendarEntry",
   data() {
     return {
-      inputEntry: ""
+      inputEntry: "",
+      error: false
     };
   },
   computed: {
@@ -36,7 +44,9 @@ export default {
   },
   methods: {
     submitEvent(details) {
-      store.submitEvent(details);
+      const inputDetails = details.trim();
+      if (inputDetails === "") return (this.error = true);
+      store.submitEvent(inputDetails);
       this.inputEntry = "";
     }
   }

@@ -36,4 +36,14 @@ describe("weekly task calendar", function() {
 
     cy.get("#calendar-entry input").should("have.value", "");
   });
+
+  it("displayes an error when the form is submitted without a value", function() {
+    cy.get("#calendar-entry input").type(" ");
+    cy.get("#calendar-entry .button").click();
+
+    cy.get("#calendar-entry .error").should(
+      "contain",
+      "You should type something first!"
+    );
+  });
 });
