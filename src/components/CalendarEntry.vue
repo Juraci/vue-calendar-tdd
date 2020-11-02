@@ -47,7 +47,11 @@ export default {
       const inputDetails = details.trim();
       if (inputDetails === "") return (this.error = true);
       store.submitEvent(inputDetails);
+      this.resetState();
+    },
+    resetState() {
       this.inputEntry = "";
+      this.error = false;
     }
   }
 };
