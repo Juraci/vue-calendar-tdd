@@ -18,6 +18,10 @@ export const store = {
   },
   submitEvent(details) {
     const activeDay = this.getActiveDay();
-    activeDay.events.push({ details, edit: false });
+    activeDay.events.push({
+      id: Math.floor(Math.random() * 100000),
+      details,
+      edit: false
+    });
   }
 };

@@ -17,7 +17,11 @@ export default {
     dayEvent: {
       type: Object,
       default() {
-        return { details: "default event", edit: true };
+        return {
+          id: Math.floor(Math.random() * 10),
+          details: "default event",
+          edit: true
+        };
       }
     }
   },

@@ -9,8 +9,8 @@ describe("Store", () => {
         abbvTitle: "Mon",
         fullTitle: "Monday",
         events: [
-          { details: "Get Groceries", edit: true },
-          { details: "Carpool", edit: false }
+          { id: 8947, details: "Get Groceries", edit: true },
+          { id: 368, details: "Carpool", edit: false }
         ],
         active: true
       },
@@ -18,7 +18,7 @@ describe("Store", () => {
         id: 2,
         abbvTitle: "Tue",
         fullTitle: "Tuesday",
-        events: [{ details: "Yoga/Gym", edit: false }],
+        events: [{ id: 716, details: "Yoga/Gym", edit: false }],
         active: false
       }
     ]);
@@ -48,10 +48,9 @@ describe("Store", () => {
       store.submitEvent("Learn Vue 3.0");
 
       expect(store.getActiveDay().events.length).to.equal(3);
-      expect(store.getActiveDay().events[2]).to.deep.equal({
-        details: "Learn Vue 3.0",
-        edit: false
-      });
+      expect(store.getActiveDay().events[2].details).to.equal("Learn Vue 3.0");
+      expect(store.getActiveDay().events[2].edit).to.equal(false);
+      expect(store.getActiveDay().events[2].id).to.not.equal(null);
     });
   });
 });
