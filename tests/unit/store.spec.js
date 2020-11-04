@@ -53,4 +53,57 @@ describe("Store", () => {
       expect(store.getActiveDay().events[2].id).to.not.equal(null);
     });
   });
+
+  describe("editEvent", () => {
+    before(() => resetStore());
+
+    it("modifies the event edit to true", () => {
+      store.editEvent(1, { id: 8947, details: "Learn Vue 3.0" });
+
+      expect(store.getActiveDay().events[0].edit).to.equal(true);
+    });
+
+    context("when the event does not exist", () => {
+      before(() => resetStore());
+
+      it("does nothing", () => {
+        store.editEvent(1, { id: 666, details: "Learn Vue 3.0" });
+
+        expect(store.getActiveDay().events).to.deep.equal([
+          { id: 8947, details: "Get Groceries", edit: false },
+          { id: 368, details: "Carpool", edit: false }
+        ]);
+      });
+    });
+  });
+
+  describe("updateEvent", () => {
+    before(() => resetStore());
+
+    it("updates the event with new event details", () => {
+      store.updateEvent(
+        1,
+        { id: 8947, details: "Get Groceries", edit: false },
+        "updated details"
+      );
+
+      expect(store.getActiveDay().events[0].details).to.equal(
+        "updated details"
+      );
+      expect(store.getActiveDay().events[0].edit).to.equal(false);
+    });
+  });
+
+  describe("resetEditOfAllEvents", () => {
+    before(() => resetStore());
+
+    it("resets the state off all events", () => {
+      store.resetEditOfAllEvents();
+      store.state.seedData.map(day => {
+        day.events.map(evt => {
+          expect(evt.edit).to.equal(false);
+        });
+      });
+    });
+  });
 });

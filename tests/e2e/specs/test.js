@@ -46,4 +46,30 @@ describe("weekly task calendar", function() {
       "You should type something first!"
     );
   });
+
+  it("allows for event editing", function() {
+    cy.get(".day.column")
+      .eq(2)
+      .as("Wednesday");
+
+    cy.get("@Wednesday").within(() => {
+      cy.get(".day-event")
+        .eq(1)
+        .as("Event");
+
+      cy.get("@Event")
+        .find(".edit-icon")
+        .click();
+
+      cy.get("@Event")
+        .find("input")
+        .type("The event was updated");
+
+      cy.get("@Event")
+        .find(".fa-check")
+        .click();
+
+      cy.get("@Event").should("contain", "The event was updated");
+    });
+  });
 });

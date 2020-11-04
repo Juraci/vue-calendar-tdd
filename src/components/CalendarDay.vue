@@ -7,6 +7,7 @@
       <div class="day-number">{{ day.id }}</div>
       <CalendarEvent
         v-for="(dayEvent, index) in day.events"
+        :dayId="day.id"
         :dayEvent="dayEvent"
         :key="index"
       />

@@ -23,5 +23,27 @@ export const store = {
       details,
       edit: false
     });
+  },
+  editEvent(dayId, { id, details }) {
+    this.resetEditOfAllEvents();
+    const activeDay = this.state.seedData.find(day => day.id === dayId);
+    const event = activeDay.events.find(evt => evt.id === id);
+    if (!event) return;
+    event.details = details;
+    event.edit = true;
+  },
+  updateEvent(dayId, { id }, newDetails) {
+    const activeDay = this.state.seedData.find(day => day.id === dayId);
+    const event = activeDay.events.find(evt => evt.id === id);
+    if (!event) return;
+    event.details = newDetails;
+    event.edit = false;
+  },
+  resetEditOfAllEvents() {
+    this.state.seedData.map(day => {
+      day.events.map(event => {
+        event.edit = false;
+      });
+    });
   }
 };
