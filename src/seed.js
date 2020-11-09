@@ -4,7 +4,7 @@ export const seedData = [
     abbvTitle: "Mon",
     fullTitle: "Monday",
     events: [
-      { id: 531, details: "Get Groceries", edit: true },
+      { id: 531, details: "Get Groceries", edit: false },
       { id: 874, details: "Carpool", edit: false }
     ],
     active: true

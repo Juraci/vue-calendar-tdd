@@ -24,17 +24,19 @@ export const store = {
       edit: false
     });
   },
+  getEventObj(dayId, eventId) {
+    const activeDay = this.state.seedData.find(day => day.id === dayId);
+    return activeDay.events.find(evt => evt.id === eventId);
+  },
   editEvent(dayId, { id, details }) {
     this.resetEditOfAllEvents();
-    const activeDay = this.state.seedData.find(day => day.id === dayId);
-    const event = activeDay.events.find(evt => evt.id === id);
+    const event = this.getEventObj(dayId, id);
     if (!event) return;
     event.details = details;
     event.edit = true;
   },
   updateEvent(dayId, { id }, newDetails) {
-    const activeDay = this.state.seedData.find(day => day.id === dayId);
-    const event = activeDay.events.find(evt => evt.id === id);
+    const event = this.getEventObj(dayId, id);
     if (!event) return;
     event.details = newDetails;
     event.edit = false;
