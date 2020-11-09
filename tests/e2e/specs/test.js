@@ -72,4 +72,22 @@ describe("weekly task calendar", function() {
       cy.get("@Event").should("contain", "The event was updated");
     });
   });
+
+  it("allows for event deleting", function() {
+    cy.get(".day.column")
+      .eq(1)
+      .as("Tuesday");
+
+    cy.get("@Tuesday").within(() => {
+      cy.get(".day-event")
+        .eq(0)
+        .as("Event");
+
+      cy.get("@Event")
+        .find(".delete-icon")
+        .click();
+
+      cy.get(".day-event").should("have.length", 0);
+    });
+  });
 });

@@ -41,6 +41,12 @@ export const store = {
     event.details = newDetails;
     event.edit = false;
   },
+  deleteEvent(dayId, { id }) {
+    const event = this.getEventObj(dayId, id);
+    const activeDay = this.state.seedData.find(day => day.id === dayId);
+    const index = activeDay.events.indexOf(event);
+    activeDay.events.splice(index, 1);
+  },
   resetEditOfAllEvents() {
     this.state.seedData.map(day => {
       day.events.map(event => {

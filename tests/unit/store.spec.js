@@ -106,4 +106,14 @@ describe("Store", () => {
       });
     });
   });
+
+  describe("deleteEvent", () => {
+    before(() => resetStore());
+
+    it("deletes the selected event", () => {
+      store.deleteEvent(1, { id: 8947, details: "Get Groceries", edit: false });
+      expect(store.getActiveDay().events.length).to.equal(1);
+      expect(store.getActiveDay().events[0].id).to.equal(368);
+    });
+  });
 });

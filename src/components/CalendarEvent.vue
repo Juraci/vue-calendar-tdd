@@ -9,7 +9,11 @@
             @click="editEvent(dayId, dayEvent)"
           >
           </i>
-          <i class="fa fa-trash-o delete-icon"></i>
+          <i
+            class="fa fa-trash-o delete-icon"
+            @click="deleteEvent(dayId, dayEvent)"
+          >
+          </i>
         </div>
       </div>
       <div v-if="dayEvent.edit">
@@ -70,6 +74,9 @@ export default {
     },
     updateEvent(dayId, dayEvent, newDetails) {
       store.updateEvent(dayId, dayEvent, newDetails);
+    },
+    deleteEvent(dayId, dayEvent) {
+      store.deleteEvent(dayId, dayEvent);
     }
   }
 };
