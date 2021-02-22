@@ -5,15 +5,13 @@
         type="text"
         placeholder="New Event"
         v-model="inputEntry"
+        @keyup.enter="submitEvent()"
         required
       />
       <p class="calendar-entry-day">
         Day of event: <span class="bold">{{ getTitle }}</span>
       </p>
-      <a
-        class="button is-primary is-small is-outlined"
-        @click="submitEvent(inputEntry)"
-      >
+      <a class="button is-primary is-small is-outlined" @click="submitEvent()">
         Submit
       </a>
     </div>
@@ -43,8 +41,8 @@ export default {
     }
   },
   methods: {
-    submitEvent(details) {
-      const inputDetails = details.trim();
+    submitEvent() {
+      const inputDetails = this.inputEntry.trim();
       if (inputDetails === "") return (this.error = true);
       store.submitEvent(inputDetails);
       this.resetState();
